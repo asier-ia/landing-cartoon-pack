@@ -2,7 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [galletas]
+    branches: [helados, tortillas, galletas]
+
+concurrency:
+  group: pages-${{ github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -21,13 +25,7 @@ jobs:
 
       - name: Build
         working-directory: frontend
-        run: |
-          set +e
-          npm run build 2>&1; EXIT=$?
-          if [ $EXIT -ne 0 ]; then
-            echo "::error::npm run build exited with code $EXIT"
-            exit $EXIT
-          fi
+        run: npm run build -- --base=/landing-cartoon-pack/${{ github.ref_name }}/
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
