@@ -23,12 +23,11 @@ jobs:
         run: npm install
         working-directory: frontend
 
-      - name: Check node_modules
-        run: ls node_modules/.bin/vite* && node -e "console.log('node works')"
-        working-directory: frontend
-
       - name: Build
-        run: npm run build 2>&1
+        run: |
+          set -x
+          ls -la node_modules/.bin/vite
+          ./node_modules/.bin/vite build
         working-directory: frontend
 
       - uses: peaceiris/actions-gh-pages@v4
