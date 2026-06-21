@@ -15,25 +15,20 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install & Build
+      - name: Install
+        run: npm install
         working-directory: frontend
-        run: |
-          npm install
-          npm run build -- --base=/landing-cartoon-pack/${{ github.ref_name }}/
+
+      - name: Build
+        run: npx vite build --base=/landing-cartoon-pack/${{ github.ref_name }}/
+        working-directory: frontend
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: frontend/dist
           destination_dir: ${{ github.ref_name }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
-=======
-# test
->>>>>>> 80436c3 (ci: auto-deploy to GitHub Pages per branch)
- 
- 
