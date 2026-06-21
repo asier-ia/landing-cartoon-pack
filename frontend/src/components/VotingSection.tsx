@@ -206,7 +206,7 @@ function FlavorCard({
 
       <div className="relative aspect-square w-full border-b-4 border-ink overflow-hidden">
         <img
-          src={flavor.image}
+          src={import.meta.env.BASE_URL + flavor.image.replace(/^\//, '')}
           alt={`Personaje tortilla ${flavor.name}`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
