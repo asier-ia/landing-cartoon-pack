@@ -10,20 +10,20 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install & Build
         run: |
           cd frontend
           npm install
-          npm run build -- --base=/landing-cartoon-pack/${{ github.ref_name }}/
+          npx vite build --base /landing-cartoon-pack/${{ github.ref_name }}/
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
