@@ -13,23 +13,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: latest
 
       - name: Install
         working-directory: frontend
         run: npm install
 
-      - name: Debug
-        working-directory: frontend
-        run: |
-          echo "node: $(node -v)"
-          echo "npm: $(npm -v)"
-          ls -la node_modules/.bin/vite
-          ls -la node_modules/.bin/
-
       - name: Build
         working-directory: frontend
-        run: npm run build
+        run: |
+          set +e
+          npm run build 2>&1; EXIT=$?
+          if [ $EXIT -ne 0 ]; then
+            echo "::error::npm run build exited with code $EXIT"
+            exit $EXIT
+          fi
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
