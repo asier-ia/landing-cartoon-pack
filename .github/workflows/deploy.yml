@@ -24,7 +24,7 @@ jobs:
         working-directory: frontend
 
       - name: Build
-        run: npx vite build --base=/landing-cartoon-pack/${{ github.ref_name }}/
+        run: npm run build -- --base=/landing-cartoon-pack/${{ github.ref_name }}/
         working-directory: frontend
 
       - uses: peaceiris/actions-gh-pages@v4
