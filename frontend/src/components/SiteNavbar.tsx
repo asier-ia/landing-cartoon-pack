@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Cookie, Menu, X } from 'lucide-react'
+import { IceCreamCone, Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '#duelo', label: 'El Duelo' },
@@ -30,10 +30,10 @@ export function SiteNavbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 md:px-6">
         <a href="#top" className="flex items-center gap-2 shrink-0">
           <span className="flex size-9 min-w-9 items-center justify-center rounded-full border-4 border-ink bg-retro-red text-cream shadow-retro md:size-10">
-            <Cookie className="size-4 md:size-5" />
+            <IceCreamCone className="size-4 md:size-5" />
           </span>
           <span className="font-heading leading-none text-ink text-base sm:text-lg md:text-xl">
-            La Galletería
+            La Heladería
             <span className="block text-retro-red">Animada</span>
           </span>
         </a>

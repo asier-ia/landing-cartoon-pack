@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 const ITEMS = [
   '¡EL GRAN DUELO DE SABORES!',
   'VOTA POR TU FAVORITA',
-  'RECIÉN SALIDAS DEL HORNO',
+  'RECIÉN PREPARADOS',
   'SOLO UNA SERÁ LA CAMPEONA',
 ]
 

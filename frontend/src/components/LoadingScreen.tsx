@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Cookie } from 'lucide-react'
+import { IceCreamCone } from 'lucide-react'
 
 export function LoadingScreen() {
   const [show, setShow] = useState(true)
@@ -34,7 +34,7 @@ export function LoadingScreen() {
             }}
             className="flex size-20 items-center justify-center rounded-full border-4 border-cream bg-retro-red text-cream shadow-[6px_6px_0px_0px_rgba(253,246,227,0.3)]"
           >
-            <Cookie className="size-10" />
+            <IceCreamCone className="size-10" />
           </motion.div>
 
           <motion.p
@@ -43,7 +43,7 @@ export function LoadingScreen() {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="mt-6 font-heading text-2xl text-cream"
           >
-            La Galletería Animada
+            La Heladería Animada
           </motion.p>
 
           <motion.div

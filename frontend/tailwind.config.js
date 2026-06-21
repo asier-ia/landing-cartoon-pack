@@ -5,13 +5,15 @@ export default {
     extend: {
       colors: {
         ink: '#1A1A1A',
-        cream: '#FDF6E3',
-        'retro-red': '#D94352',
-        'retro-yellow': '#F4C542',
+        cream: '#F5F0E8',
+        'retro-red': '#FF6B8A',
+        'retro-yellow': '#F5D76E',
         'retro-blue': '#5B9BD5',
         'retro-mint': '#7EC8A4',
         'retro-pink': '#F4A2B3',
         'retro-purple': '#B088C8',
+        'retro-sky': '#8ECAE6',
+        'retro-lavender': '#C8B8E8',
       },
       fontFamily: {
         heading: ['"Luckiest Guy"', 'cursive'],

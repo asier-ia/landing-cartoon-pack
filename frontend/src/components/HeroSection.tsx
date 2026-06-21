@@ -101,8 +101,8 @@ export function HeroSection() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="mt-6 max-w-xl text-pretty font-sans text-base font-medium leading-relaxed text-ink/80 md:text-lg"
         >
-          Tres galletas nuevecitas salieron del horno y solo una puede ser la
-          campeona. ¡Tú decides! Prueba con la vista, elige tu favorita y
+          Tres helados cremositos salieron de la nevera y solo uno puede ser el
+          campeón. ¡Tú decides! Elige tu favorito y
           <span className="font-bold text-retro-red"> vota por el sabor ganador.</span>
         </motion.p>
 

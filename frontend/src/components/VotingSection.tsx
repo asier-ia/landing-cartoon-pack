@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Crown, Trophy, Sparkles } from 'lucide-react'
+import { Check, Crown, Trophy, Sparkles, Gift } from 'lucide-react'
 import { FLAVORS, type Flavor } from '../lib/flavors'
 import { PopIn } from './PopIn'
 
@@ -91,7 +91,7 @@ export function VotingSection() {
               Elige a tu <span className="text-retro-red">Campeona</span>
             </h2>
             <p className="mt-3 font-sans text-base font-medium text-ink/70">
-              Toca el botón de tu galleta favorita. ¡Solo tienes un voto, así
+               Toca el botón de tu helado favorito. ¡Solo tienes un voto, así
               que elige con sabiduría!
             </p>
           </PopIn>
@@ -186,7 +186,7 @@ function FlavorCard({
       <div className="relative aspect-square w-full border-b-4 border-ink overflow-hidden">
         <img
           src={flavor.image}
-          alt={`Personaje galleta ${flavor.name}`}
+          alt={`Personaje helado ${flavor.name}`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
