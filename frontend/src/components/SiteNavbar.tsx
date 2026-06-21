@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Cookie, Menu, X } from 'lucide-react'
+import { ChefHat, Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '#duelo', label: 'El Duelo' },
   { href: '#votar', label: 'Sabores' },
   { href: '#resultados', label: 'Resultados' },
+  { href: '#sorteo', label: 'Sorteo' },
 ]
 
 const menuVariants = {
@@ -30,20 +31,20 @@ export function SiteNavbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 md:px-6">
         <a href="#top" className="flex items-center gap-2 shrink-0">
           <span className="flex size-9 min-w-9 items-center justify-center rounded-full border-4 border-ink bg-retro-red text-cream shadow-retro md:size-10">
-            <Cookie className="size-4 md:size-5" />
+            <ChefHat className="size-4 md:size-5" />
           </span>
           <span className="font-heading leading-none text-ink text-base sm:text-lg md:text-xl">
-            La Galletería
+            La Tortillería
             <span className="block text-retro-red">Animada</span>
           </span>
         </a>
 
-        <div className="hidden items-center gap-6 font-sans text-sm font-semibold text-ink md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-retro-red"
+              className="rounded-full border-4 border-transparent px-3 py-1.5 font-heading text-sm text-ink transition-all hover:border-ink hover:shadow-retro hover:-translate-y-0.5 active:translate-y-1 active:shadow-none"
             >
               {link.label}
             </a>

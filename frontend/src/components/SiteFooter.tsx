@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Camera, Cookie, Mail, MessageCircle, Music, Star } from 'lucide-react'
+import { Camera, ChefHat, Mail, MessageCircle, Music, Star } from 'lucide-react'
 import { PopIn } from './PopIn'
 
 const SOCIALS = [
@@ -62,7 +62,7 @@ export function SiteFooter() {
             transition={{ duration: 0.6 }}
             className="mb-6 inline-flex size-16 items-center justify-center rounded-full border-4 border-cream bg-retro-red text-cream"
           >
-            <Cookie className="size-8" />
+            <ChefHat className="size-8" />
           </motion.span>
         </PopIn>
 
@@ -75,8 +75,8 @@ export function SiteFooter() {
 
         <PopIn delay={0.2}>
           <p className="mt-5 max-w-md text-pretty font-sans text-sm font-medium leading-relaxed text-cream/80">
-            Gracias por votar en el Gran Duelo de Sabores. Síguenos para
-            descubrir a la galleta campeona y nuestros próximos estrenos.
+            Gracias por votar en el Gran Duelo de Tortillas. Síguenos para
+            descubrir a la tortilla campeona y nuestros próximos estrenos.
           </p>
         </PopIn>
 
@@ -97,7 +97,7 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-10 font-heading text-xs text-cream/60">
-          La Galletería Animada &copy; 1932 &middot; Hecho con cariño
+          La Tortillería Animada &copy; 2025 &middot; Hecho con cariño
         </p>
       </div>
     </footer>

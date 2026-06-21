@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Star, Sparkles } from 'lucide-react'
+import { Star, Flame } from 'lucide-react'
 
 const SPEED_LINES = Array.from({ length: 5 }, (_, i) => ({
   id: i,
@@ -47,7 +47,7 @@ export function HeroSection() {
         />
       ))}
 
-      {/* Floating sparkles */}
+      {/* Floating flames */}
       {FLOATING_STARS.map((star) => (
         <motion.div
           key={star.id}
@@ -57,7 +57,7 @@ export function HeroSection() {
           animate={{
             y: [0, -12, 0],
             rotate: [0, 12, -6, 0],
-            opacity: [0.4, 0.8, 0.4],
+            opacity: [0.3, 0.7, 0.3],
           }}
           transition={{
             duration: 3 + star.delay,
@@ -66,9 +66,9 @@ export function HeroSection() {
             delay: star.delay,
           }}
         >
-          <Sparkles
+          <Flame
             size={star.size}
-            className="text-retro-yellow drop-shadow-[2px_2px_0px_rgba(0,0,0,0.3)]"
+            className="text-retro-red drop-shadow-[2px_2px_0px_rgba(0,0,0,0.3)]"
           />
         </motion.div>
       ))}
@@ -80,9 +80,9 @@ export function HeroSection() {
           transition={{ type: 'spring', stiffness: 200, damping: 12, delay: 0.1 }}
           className="wobble mb-6 inline-flex items-center gap-2 rounded-full border-4 border-ink bg-retro-blue px-5 py-2 font-heading text-xs text-ink shadow-retro md:text-sm"
         >
-          <Star className="size-4 fill-ink" />
-          Nuevo Pack de 3 Sabores
-          <Star className="size-4 fill-ink" />
+           <Flame className="size-4 fill-ink" />
+          Nuevo Pack de 3 Tortillas
+          <Flame className="size-4 fill-ink" />
         </motion.div>
 
         <motion.h1
@@ -92,7 +92,7 @@ export function HeroSection() {
           className="font-heading text-4xl leading-[1.05] text-retro-red sm:text-6xl md:text-7xl"
         >
           <span className="block text-balance text-ink">¡El Gran Duelo</span>
-          <span className="block text-balance">de Sabores!</span>
+          <span className="block text-balance">de Tortillas!</span>
         </motion.h1>
 
         <motion.p
@@ -101,9 +101,9 @@ export function HeroSection() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="mt-6 max-w-xl text-pretty font-sans text-base font-medium leading-relaxed text-ink/80 md:text-lg"
         >
-          Tres galletas nuevecitas salieron del horno y solo una puede ser la
-          campeona. ¡Tú decides! Prueba con la vista, elige tu favorita y
-          <span className="font-bold text-retro-red"> vota por el sabor ganador.</span>
+          Tres tortillas recién hechas salieron de la sartén y solo una puede ser la
+          campeona. ¡Tú decides! Elige tu favorita y
+          <span className="font-bold text-retro-red"> vota por la tortilla ganadora.</span>
         </motion.p>
 
         <motion.a

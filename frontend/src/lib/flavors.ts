@@ -10,33 +10,33 @@ export interface Flavor {
 
 export const FLAVORS: Flavor[] = [
   {
-    id: 'choco-loca',
-    name: 'Choco-Loca',
-    tagline: 'Para los locos del cacao',
+    id: 'chorizo-endiablado',
+    name: 'Chorizo Endiablado',
+    tagline: 'El infierno sabe mejor de lo que crees',
     description:
-      'Una explosión de chocolate belga con trocitos crujientes y un corazón de crema de avellanas. La favorita de los que no se rinden.',
-    image: '/cookies/galleta_choco.jpeg',
-    bg: '#F4C542',
+      'Tortilla de chorizo picante con un toque diabólico. Nuestro diablillo rojo le da ese punto rebelde que engancha.',
+    image: '/tortillas/t_chorizo.jpeg',
+    bg: '#E87A6A',
     initialVotes: 42,
   },
   {
-    id: 'fresa-magica',
-    name: 'Fresa Mágica',
-    tagline: 'Dulce como un hechizo',
+    id: 'la-cabra',
+    name: 'La Cabra',
+    tagline: 'La más cabra... y la más cremosa',
     description:
-      'Galleta de fresa silvestre con chispas de azúcar perlado y un toque secreto de vainilla. Cada mordisco es pura fantasía.',
-    image: '/cookies/galleta_fresa.jpeg',
-    bg: '#F4A2B3',
+      'Queso de cabra fundido en una tortilla sedosa. Tan buena que es "la cabra" de la familia. Literalmente.',
+    image: '/tortillas/t_cabra.jpeg',
+    bg: '#F0C040',
     initialVotes: 35,
   },
   {
-    id: 'vainilla-retro',
-    name: 'Vainilla Retro',
-    tagline: 'El clásico que nunca falla',
+    id: 'boletus-del-bosque',
+    name: 'Boletus del Bosque',
+    tagline: 'Un bosque en cada bocado',
     description:
-      'Vainilla de Madagascar con virutas de caramelo salado y un acabado crujiente que sabe a los años dorados. Simple, perfecta, inolvidable.',
-    image: '/cookies/galleta_penaut.jpeg',
-    bg: '#7EC8A4',
+      'Boletus salteados que huelen a tierra mojada y otoño. Una seta feliz corona esta maravilla silvestre.',
+    image: '/tortillas/t_boletus.jpeg',
+    bg: '#B5C8A0',
     initialVotes: 28,
   },
 ]

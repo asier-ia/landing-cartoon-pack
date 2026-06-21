@@ -1,8 +1,9 @@
 import { useMemo, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Crown, Trophy, Sparkles } from 'lucide-react'
+import { Check, Crown, Trophy, Sparkles, Gift, ChefHat } from 'lucide-react'
 import { FLAVORS, type Flavor } from '../lib/flavors'
 import { PopIn } from './PopIn'
+import { VoteModal } from './VoteModal'
 
 function ConfettiBurst({ origin }: { origin: 'card' | 'board' }) {
   const COLORS = ['#F4C542', '#D94352', '#5B9BD5', '#7EC8A4', '#F4A2B3', '#B088C8']
@@ -56,16 +57,24 @@ export function VotingSection() {
   )
   const [votedFor, setVotedFor] = useState<string | null>(null)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [modalFlavor, setModalFlavor] = useState<Flavor | null>(null)
+  const [showModal, setShowModal] = useState(false)
 
-  const handleVote = useCallback(
-    (id: string) => {
-      if (votedFor) return
-      setVotedFor(id)
-      setVotes((prev) => ({ ...prev, [id]: prev[id] + 1 }))
+  const handleOpenModal = useCallback((flavor: Flavor) => {
+    setModalFlavor(flavor)
+    setShowModal(true)
+  }, [])
+
+  const handleModalSuccess = useCallback(
+    (name: string) => {
+      if (!modalFlavor) return
+      setShowModal(false)
+      setVotedFor(modalFlavor.id)
+      setVotes((prev) => ({ ...prev, [modalFlavor.id]: prev[modalFlavor.id] + 1 }))
       setShowConfetti(true)
       setTimeout(() => setShowConfetti(false), 1200)
     },
-    [votedFor],
+    [modalFlavor],
   )
 
   const total = useMemo(
@@ -87,12 +96,15 @@ export function VotingSection() {
       <section id="votar" className="border-b-4 border-ink px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <PopIn className="mb-12 text-center">
-            <h2 className="font-heading text-3xl text-ink sm:text-4xl md:text-5xl">
-              Elige a tu <span className="text-retro-red">Campeona</span>
-            </h2>
+              <h2 className="font-heading text-3xl text-ink sm:text-4xl md:text-5xl">
+                Elige a tu <span className="text-retro-red">Campeona</span>
+              </h2>
             <p className="mt-3 font-sans text-base font-medium text-ink/70">
-              Toca el botón de tu galleta favorita. ¡Solo tienes un voto, así
-              que elige con sabiduría!
+            Toca el botón de tu tortilla favorita. ¡Solo tienes un voto, así
+            que elige con sabiduría! Cada voto te mete en el{' '}
+            <a href="#sorteo" className="inline-flex items-center gap-1 font-bold text-retro-red underline hover:no-underline">
+              <Gift className="size-4" />sorteo
+            </a>.
             </p>
           </PopIn>
 
@@ -103,7 +115,7 @@ export function VotingSection() {
                   flavor={flavor}
                   voted={votedFor === flavor.id}
                   votingClosed={votedFor !== null}
-                  onVote={() => handleVote(flavor.id)}
+                  onVote={() => handleOpenModal(flavor)}
                   isLeader={!votedFor ? false : flavor.id === leaderId}
                   showConfetti={showConfetti && votedFor === flavor.id}
                 />
@@ -120,6 +132,15 @@ export function VotingSection() {
         hasVoted={votedFor !== null}
         showConfetti={showConfetti}
       />
+
+      {modalFlavor && (
+        <VoteModal
+          flavor={modalFlavor}
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          onSuccess={handleModalSuccess}
+        />
+      )}
     </>
   )
 }
@@ -186,7 +207,7 @@ function FlavorCard({
       <div className="relative aspect-square w-full border-b-4 border-ink overflow-hidden">
         <img
           src={flavor.image}
-          alt={`Personaje galleta ${flavor.name}`}
+          alt={`Personaje tortilla ${flavor.name}`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
@@ -207,7 +228,7 @@ function FlavorCard({
           whileTap={votingClosed ? {} : { scale: 0.95 }}
           className="wobble mt-5 w-full rounded-full border-4 border-ink bg-cream px-4 py-3 font-heading text-sm text-ink shadow-retro transition-all hover:-translate-y-1 hover:bg-retro-red hover:text-cream hover:shadow-retro-lg active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-cream disabled:hover:text-ink disabled:hover:shadow-retro"
         >
-          {voted ? '¡Gracias por votar!' : '¡Votar por este!'}
+          {voted ? '¡Gracias por votar!' : '¡Votar por esta!'}
         </motion.button>
       </div>
     </motion.article>
@@ -228,7 +249,7 @@ function ResultsBoard({
   showConfetti: boolean
 }) {
   return (
-    <section id="resultados" className="border-b-4 border-ink bg-retro-blue/30 px-4 py-16 md:py-24 relative">
+    <section id="resultados" className="border-b-4 border-ink bg-retro-yellow/20 px-4 py-16 md:py-24 relative">
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <ConfettiBurst origin="board" />
@@ -323,7 +344,7 @@ function ResultsBoard({
                 transition={{ type: 'spring', stiffness: 200, damping: 14 }}
                 className="rounded-2xl border-4 border-ink bg-retro-mint px-4 py-3 text-center font-heading text-xs text-ink sm:text-sm"
               >
-                ¡Tu voto ya cuenta! Comparte con tus amigos para que tu sabor gane.
+                ¡Tu voto ya cuenta! Comparte con tus amigos para que tu tortilla gane.
               </motion.p>
             )}
           </AnimatePresence>
