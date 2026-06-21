@@ -25,10 +25,9 @@ jobs:
 
       - name: Build
         run: |
-          set -x
-          ls -la node_modules/.bin/vite
-          ./node_modules/.bin/vite build
-        working-directory: frontend
+          pwd
+          ls -la frontend/node_modules/.bin/vite
+          cd frontend && ./node_modules/.bin/vite build
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
