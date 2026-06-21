@@ -15,31 +15,49 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install
-        run: npm install
-        working-directory: frontend
-
-      - name: Build
+      - name: Install & Build
         run: |
           set +e
+          echo "# Build Log" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
           echo "=== pwd ==="
           pwd
-          echo "=== ls frontend ==="
-          ls -la frontend/
+          pwd >> $GITHUB_STEP_SUMMARY
+
           echo "=== node -v ==="
           node -v
+          node -v >> $GITHUB_STEP_SUMMARY
+
           echo "=== npm -v ==="
           npm -v
-          echo "=== which vite ==="
-          which vite
-          echo "=== ls node_modules/.bin/vite* ==="
-          ls -la frontend/node_modules/.bin/vite*
-          echo "=== npm run build ==="
+          npm -v >> $GITHUB_STEP_SUMMARY
+
+          echo "=== directory ==="
+          ls -la
+          ls -la >> $GITHUB_STEP_SUMMARY
+
+          echo "=== cd frontend ==="
           cd frontend
-          npm run build 2>&1; EXIT=$?
-          echo "=== EXIT CODE: $EXIT ==="
-          echo "=== dist contents ==="
-          ls -la dist/ 2>&1
+          pwd
+          pwd >> $GITHUB_STEP_SUMMARY
+
+          echo "=== ls node_modules/.bin/vite* ==="
+          ls node_modules/.bin/vite*
+          ls node_modules/.bin/vite* >> $GITHUB_STEP_SUMMARY 2>&1
+
+          echo "=== npm install ==="
+          npm install
+          npm install >> $GITHUB_STEP_SUMMARY 2>&1
+
+          echo "=== running: vite build ==="
+          ./node_modules/.bin/vite build --base /landing-cartoon-pack/galletas/ 2>&1 | tee /tmp/build.log
+          EXIT=${PIPESTATUS[0]}
+          echo "EXIT CODE: $EXIT"
+          cat /tmp/build.log >> $GITHUB_STEP_SUMMARY 2>&1
+          echo "EXIT CODE: $EXIT" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          ls -la dist/ >> $GITHUB_STEP_SUMMARY 2>&1
           exit $EXIT
 
       - uses: peaceiris/actions-gh-pages@v4
