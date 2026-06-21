@@ -2,11 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [helados, tortillas, galletas]
-
-concurrency:
-  group: pages-${{ github.ref_name }}
-  cancel-in-progress: true
+    branches: [galletas]
 
 jobs:
   deploy:
@@ -19,11 +15,32 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install & Build
+      - name: Install
+        run: npm install
+        working-directory: frontend
+
+      - name: Build
         run: |
+          set +e
+          echo "=== pwd ==="
+          pwd
+          echo "=== ls frontend ==="
+          ls -la frontend/
+          echo "=== node -v ==="
+          node -v
+          echo "=== npm -v ==="
+          npm -v
+          echo "=== which vite ==="
+          which vite
+          echo "=== ls node_modules/.bin/vite* ==="
+          ls -la frontend/node_modules/.bin/vite*
+          echo "=== npm run build ==="
           cd frontend
-          npm install
-          npx vite build --base /landing-cartoon-pack/${{ github.ref_name }}/
+          npm run build 2>&1; EXIT=$?
+          echo "=== EXIT CODE: $EXIT ==="
+          echo "=== dist contents ==="
+          ls -la dist/ 2>&1
+          exit $EXIT
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
